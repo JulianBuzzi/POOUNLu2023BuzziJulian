@@ -1,4 +1,4 @@
-package Pila;
+package Ejercicio3;
 
 import Nodo.Nodo;
 

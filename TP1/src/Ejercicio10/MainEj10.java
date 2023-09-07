@@ -1,7 +1,6 @@
 package Ejercicio10;
 
-import Lista.Lista;
-import Tarea.Tarea;
+import Ejercicio1.Lista;
 
 import java.time.LocalDate;
 

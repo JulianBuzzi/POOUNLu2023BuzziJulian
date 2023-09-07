@@ -1,5 +1,7 @@
-import Tarea.Tarea;
-import Lista.Lista;
+package Ejercicio5;
+
+import Ejercicio5.Tarea;
+import Ejercicio1.Lista;
 import java.time.LocalDate;
 
 public class Main {

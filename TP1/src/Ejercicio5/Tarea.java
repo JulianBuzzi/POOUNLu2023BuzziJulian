@@ -1,6 +1,4 @@
-package Tarea;
-import Lista.Lista;
-import Nodo.Nodo;
+package Ejercicio5;
 
 import java.time.LocalDate;
 

@@ -1,31 +1,31 @@
-package Lista;
+package Ejercicio2;
 
-import Nodo.Nodo;
+import NodoDobleEnlace.NodoDoble;
 
-public class Lista {
-    private Nodo inicio = null;
+public class ListaDoblementeEnlazada {
+    private NodoDoble inicio = null;
 
     public void agregar(Object dato){
-        Nodo newNodo = new Nodo();
+        NodoDoble newNodo = new NodoDoble();
         newNodo.setDato(dato);
         if (this.inicio == null){
             this.inicio = newNodo;
         } else {
-            Nodo nodoAux = this.inicio;
+            NodoDoble nodoAux = this.inicio;
             while (nodoAux.getProximo() != null){
                 nodoAux = nodoAux.getProximo();
             }
             nodoAux.setProximo(newNodo);
+            newNodo.setAnterior(nodoAux);
         }
     }
-
     public boolean esVacia(){
         return this.inicio == null;
     }
 
     public String toString(){
         String resultado = "";
-        Nodo newNodo = this.inicio;
+        NodoDoble newNodo = this.inicio;
         if (newNodo == null){
             resultado = "Lista vacia";
         } else {
@@ -40,7 +40,7 @@ public class Lista {
 
     public int longitud(){
         int resultado = 0;
-        Nodo newNodo = this.inicio;
+        NodoDoble newNodo = this.inicio;
         if (newNodo != null){
             while (newNodo != null){
                 resultado++;
@@ -58,15 +58,21 @@ public class Lista {
             return;
         }
 
-        Nodo newNodo = this.inicio;
+        NodoDoble newNodo = this.inicio;
         if (posicion == 1){
             this.inicio = this.inicio.getProximo();
+            this.inicio.setAnterior(null);
         } else {
             for (int i = 0; i < posicion - 2; i++){
                 newNodo = newNodo.getProximo();
             }
-            Nodo nodoAux = newNodo.getProximo();
-            newNodo.setProximo(nodoAux.getProximo());
+            NodoDoble nodoAux = newNodo.getProximo();
+            if (posicion == longitud()){
+                newNodo.setProximo(null);
+            } else {
+                newNodo.setProximo(nodoAux.getProximo());
+                nodoAux.getProximo().setAnterior(newNodo);
+            }
         }
     }
 
@@ -77,7 +83,7 @@ public class Lista {
             return null;
         }
         if (posicion == 1) return this.inicio.getDato();
-        Nodo newNodo = this.inicio;
+        NodoDoble newNodo = this.inicio;
         for (int i = 0; i < posicion - 2; i++) {
             newNodo = newNodo.getProximo();
         }
@@ -89,18 +95,19 @@ public class Lista {
             System.out.println("\nPosicion No Valida");
             return;
         }
-        Nodo newNodo = new Nodo();
+        NodoDoble newNodo = new NodoDoble();
         newNodo.setDato(dato);
         if (posicion == 1){
             newNodo.setProximo(this.inicio);
             this.inicio = newNodo;
         } else {
-            Nodo nodoAux = this.inicio;
+            NodoDoble nodoAux = this.inicio;
             for (int i = 0; i < posicion - 2; i++){
                 nodoAux = nodoAux.getProximo();
             }
             newNodo.setProximo(nodoAux.getProximo());
             nodoAux.setProximo(newNodo);
+            newNodo.setAnterior(nodoAux);
         }
     }
 }

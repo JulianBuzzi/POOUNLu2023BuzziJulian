@@ -1,4 +1,4 @@
-package Colas;
+package Ejercicio4;
 
 import Nodo.Nodo;
 
